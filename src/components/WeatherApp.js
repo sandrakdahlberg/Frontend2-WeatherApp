@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PositionWeather from './PositionWeather';
+import WeatherDetails from './WeatherDetails';
 
 export default class WeatherApp extends Component{
 
@@ -8,7 +9,8 @@ export default class WeatherApp extends Component{
         super(props);
         this.state = {
             weather: [],
-            city: ''
+            city: '',
+            forecast: []
         };
         
     }
@@ -22,15 +24,17 @@ export default class WeatherApp extends Component{
         .then(response => response.json())
         .then(json => this.setState({weather : json.main, city: json.name}))
 
-        //url för 5 dygns prognos
-        // https://api.openweathermap.org/data/2.5/forecast?id=2673730&appid=cfa34709cd1491ef1163884d1f699f67&units=metric
-
+        //fetch för 5 dygns prognos
+        fetch('http://api.openweathermap.org/data/2.5/forecast?q='+city+','+country+'&appid=cfa34709cd1491ef1163884d1f699f67&units=metric')
+        .then(resp => resp.json())
+        .then(jsondata => this.setState({forecast: jsondata.list}))
     }
 
     render()
     {
         return (<div>
             <PositionWeather city={this.state.city} weather={this.state.weather} />
+            <WeatherDetails forecast={this.state.forecast} />
         </div>);
     }
 }
