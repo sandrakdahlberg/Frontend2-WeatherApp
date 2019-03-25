@@ -7,21 +7,30 @@ export default class WeatherApp extends Component{
     {
         super(props);
         this.state = {
-            weather: []
+            weather: [],
+            city: ''
         };
+        
     }
 
     componentDidMount()
     {
-        fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&APPID=cfa34709cd1491ef1163884d1f699f67')
+        let city = 'stockholm';
+        let country = 'sweden';
+
+        fetch('http://api.openweathermap.org/data/2.5/weather?q='+city+','+country+'&APPID=cfa34709cd1491ef1163884d1f699f67&units=metric')
         .then(response => response.json())
-        .then(json => this.setState({weather : json}))
+        .then(json => this.setState({weather : json.main, city: json.name}))
+
+        //url för 5 dygns prognos
+        // https://api.openweathermap.org/data/2.5/forecast?id=2673730&appid=cfa34709cd1491ef1163884d1f699f67&units=metric
+
     }
 
     render()
     {
         return (<div>
-            <PositionWeather weather={this.state.weather} />
+            <PositionWeather city={this.state.city} weather={this.state.weather} />
         </div>);
     }
 }
