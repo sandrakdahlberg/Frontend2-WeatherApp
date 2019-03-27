@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import '../App.css';
+import '../owfont-master/css/owfont-regular.css';
 
 export default class PositionWeather extends Component{
 
@@ -6,13 +8,16 @@ export default class PositionWeather extends Component{
     {
         let date = new Date();
         let shortDate = date.toLocaleDateString(); 
-        let time = date.toLocaleTimeString();      
+        let time = date.toLocaleTimeString();
+        let iconId = this.props.id.map((n)=> {return n.id});
+        let iconString = 'owf owf-'+iconId+' owf-5x';      
                 
         return (
-            <div>
+            <div className='currentInfo'>
                 <h1>{this.props.city}</h1>
                 <h3>{shortDate} {time}</h3>                
-                <p>{this.props.weather.temp}°C</p>                
+                <p>{this.props.weather.temp}°C</p>
+                <i className={iconString}></i>
             </div>
         );
     }

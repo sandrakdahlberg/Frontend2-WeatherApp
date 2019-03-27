@@ -1,0 +1,19 @@
+.weatherCard
+{
+    display: table-row;
+    margin: 5px;
+}
+
+.weatherCard h5, p, i{
+    display: table-cell;
+    padding-left: 20px;
+}
+
+.currentInfo
+{
+    border: 1px solid black;
+}
+body{
+    display:block;
+}
+
