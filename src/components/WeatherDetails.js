@@ -41,25 +41,30 @@ export default class WeatherDetails extends Component{
               }
 
             let hour = date.getHours();
+            if(hour < 10)
+            {
+              hour = '0'+hour;
+            }
 
             return(<li className='weatherCard'>
                   
                   <h5>{thisday}</h5>
                   <p>{hour}:00</p>
-                  <p>Min: {day.main.temp_min}°C</p>
-                  <p>Max: {day.main.temp_max}°C</p> 
+                  <p className='minAndMax'>{day.main.temp_min}°C</p>
+                  <p className='minAndMax'>{day.main.temp_max}°C</p> 
                   <i className={iconString}></i>
                   
                 </li>
             )
         })
         
-        return(<ul>
+        return(<ul id='Forecast'>
+          <h1 className='FiveDaysForecastHeadline'>Prognos kommande 5 dagar</h1>
           <li className='weatherCard weatherCardHeadlines'>
-          <h5>Dag</h5>
-                  <p>Tid</p>
-                  <p>Min temperatur</p>
-                  <p>Max temperatur</p> 
+            <h5>Dag</h5>
+            <p>Tid</p>
+            <p className='minAndMax'>Min</p>
+            <p className='minAndMax'>Max</p> 
           </li>
             {days}
         </ul>);

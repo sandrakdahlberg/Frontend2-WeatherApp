@@ -6,14 +6,64 @@
 
 .weatherCard h5, p, i{
     display: table-cell;
-    padding-left: 20px;
+    padding-left: 40px;
+    font-family: 'Courier New';
 }
 
-.currentInfo
-{
-    border: 1px solid black;
+.weatherCardHeadlines{
+    font-size: 26px;
 }
+
+.minAndMax{
+    text-align: right;
+}
+
+#Forecast{
+    background-color: rgba(255, 255, 255, 0.3); 
+    color: black;
+    width: 550px;
+    margin-top: 0;
+    padding-top: 5px; 
+    border-radius: 25px; 
+    margin-left: 10px; 
+    padding-bottom: 5px;
+}
+
+.FiveDaysForecastHeadline{
+    font-family:Georgia;
+}
+
+.currentInfo{
+    font-family:Georgia;
+    padding-left: 100px;
+    height: 300px;    
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.currentInfo h1{
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+.currentInfo h1 i{
+    font-size: 100px;
+}
+
+.currentInfo h3{
+    margin-top: 0;
+}
+
+.currentInfo p{
+    font-weight: bold;
+    font-size: 50px;    
+}
+
 body{
     display:block;
+    background-image: url('../src/pictures/clouds-background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 

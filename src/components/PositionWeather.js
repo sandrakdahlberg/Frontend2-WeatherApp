@@ -14,10 +14,10 @@ export default class PositionWeather extends Component{
                 
         return (
             <div className='currentInfo'>
-                <h1>{this.props.city}</h1>
+                <h1>{this.props.city}<i className={iconString}></i></h1>
                 <h3>{shortDate} {time}</h3>                
                 <p>{this.props.weather.temp}°C</p>
-                <i className={iconString}></i>
+                
             </div>
         );
     }
