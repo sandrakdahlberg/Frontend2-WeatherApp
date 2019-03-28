@@ -101,8 +101,8 @@ export default class WeatherApp extends Component{
                 
         return (<div>
             <Search search={this.searchCity}/> 
-            <PositionWeather save={this.addToFavorites} id={this.state.id} city={this.state.city} weather={this.state.weather} />
-            <WeatherDetails forecast={this.state.forecast} /> 
+            <PositionWeather favs={myFavoritesArray} save={this.addToFavorites} id={this.state.id} city={this.state.city} weather={this.state.weather} />
+            <WeatherDetails forecast={this.state.forecast} />            
             <FavoritesList favorites={myFavoritesArray} getWeather={this.searchCity}/>           
         </div>);
     }
