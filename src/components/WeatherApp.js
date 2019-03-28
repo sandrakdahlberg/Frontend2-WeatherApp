@@ -96,8 +96,9 @@ export default class WeatherApp extends Component{
             let favorites = localStorage.getItem('favorites');
             myFavoritesArray = JSON.parse(favorites);
         }
-        
-        
+
+        //localStorage.clear();
+                
         return (<div>
             <Search search={this.searchCity}/> 
             <PositionWeather save={this.addToFavorites} id={this.state.id} city={this.state.city} weather={this.state.weather} />
