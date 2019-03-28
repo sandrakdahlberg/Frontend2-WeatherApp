@@ -10,7 +10,7 @@ export default class FavoritesList extends Component{
         if(this.props.favorites != null)
         {
             myListItems = this.props.favorites.map((fav)=> {
-                return <li>{fav}</li>
+                return (<li><a href='#' onClick={() => this.props.getWeather(fav)}>{fav}</a></li>)
             })
         }
         

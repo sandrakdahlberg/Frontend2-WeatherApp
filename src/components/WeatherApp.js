@@ -65,7 +65,7 @@ export default class WeatherApp extends Component{
         //fetch för 5 dygns prognos
         fetch('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=cfa34709cd1491ef1163884d1f699f67&units=metric')
         .then(res => res.json())
-        .then(jsondate => this.setState({forecast: jsondate.list}))
+        .then(jsondata => this.setState({forecast: jsondata.list}))
     }
 
     addToFavorites(city)
@@ -103,7 +103,7 @@ export default class WeatherApp extends Component{
             <PositionWeather save={this.addToFavorites} id={this.state.id} city={this.state.city} weather={this.state.weather} />
             <Search search={this.searchCity}/>            
             <WeatherDetails forecast={this.state.forecast} /> 
-            <FavoritesList favorites={myFavoritesArray}/>           
+            <FavoritesList favorites={myFavoritesArray} getWeather={this.searchCity}/>           
         </div>);
     }
 }
