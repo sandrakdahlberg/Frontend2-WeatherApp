@@ -3,6 +3,7 @@ import PositionWeather from './PositionWeather';
 import WeatherDetails from './WeatherDetails';
 import '../App.css';
 import Search from './Search';
+import FavoritesList from './FavoritesList';
 
 export default class WeatherApp extends Component{
 
@@ -13,10 +14,12 @@ export default class WeatherApp extends Component{
             weather: [],
             city: '',
             forecast: [],
-            id: []
+            id: [],
+            //favorites: []
         };
         this.searchCity = this.searchCity.bind(this);
         this.showLocation = this.showLocation.bind(this);
+        this.addToFavorites = this.addToFavorites.bind(this);
     }
 
     componentDidMount()
@@ -36,8 +39,7 @@ export default class WeatherApp extends Component{
         fetch('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=cfa34709cd1491ef1163884d1f699f67&units=metric')
         .then(resp => resp.json())
         .then(jsondata => this.setState({forecast: jsondata.list}))
-        }   
-        
+        } 
     }
 
     showLocation(position) {
@@ -66,12 +68,42 @@ export default class WeatherApp extends Component{
         .then(jsondate => this.setState({forecast: jsondate.list}))
     }
 
+    addToFavorites(city)
+    {
+        if(localStorage.getItem('favorites') === null)
+        {
+            let newFavoritesArray = [];
+            newFavoritesArray.push(city);
+            localStorage.setItem('favorites', JSON.stringify(newFavoritesArray));
+        }
+        else
+        {
+            let mySavedFavorites = localStorage.getItem('favorites');
+            let savedFavorites =JSON.parse(mySavedFavorites);
+            savedFavorites.push(city);
+            localStorage.setItem('favorites', JSON.stringify(savedFavorites));
+        }
+        
+        window.location.reload();
+
+    }
+
     render()
     {
+        //Hämta favoriter om det finns sparat i localstorage
+        let myFavoritesArray;
+        if(localStorage.getItem('favorites') !== "")
+        {
+            let favorites = localStorage.getItem('favorites');
+            myFavoritesArray = JSON.parse(favorites);
+        }
+        
+        
         return (<div>
-            <PositionWeather id={this.state.id} city={this.state.city} weather={this.state.weather} />
-            <Search search={this.searchCity}/>
-            <WeatherDetails forecast={this.state.forecast} />            
+            <PositionWeather save={this.addToFavorites} id={this.state.id} city={this.state.city} weather={this.state.weather} />
+            <Search search={this.searchCity}/>            
+            <WeatherDetails forecast={this.state.forecast} /> 
+            <FavoritesList favorites={myFavoritesArray}/>           
         </div>);
     }
 }
