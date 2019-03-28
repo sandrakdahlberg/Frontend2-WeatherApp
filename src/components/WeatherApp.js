@@ -14,8 +14,7 @@ export default class WeatherApp extends Component{
             weather: [],
             city: '',
             forecast: [],
-            id: [],
-            //favorites: []
+            id: []
         };
         this.searchCity = this.searchCity.bind(this);
         this.showLocation = this.showLocation.bind(this);
@@ -100,8 +99,8 @@ export default class WeatherApp extends Component{
         
         
         return (<div>
+            <Search search={this.searchCity}/> 
             <PositionWeather save={this.addToFavorites} id={this.state.id} city={this.state.city} weather={this.state.weather} />
-            <Search search={this.searchCity}/>            
             <WeatherDetails forecast={this.state.forecast} /> 
             <FavoritesList favorites={myFavoritesArray} getWeather={this.searchCity}/>           
         </div>);

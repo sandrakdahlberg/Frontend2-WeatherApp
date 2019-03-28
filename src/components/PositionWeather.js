@@ -17,7 +17,8 @@ export default class PositionWeather extends Component{
                 <h1>{this.props.city}<i className={iconString}></i></h1>
                 <h3>{shortDate} {time}</h3>                
                 <p>{this.props.weather.temp}°C</p>
-                <button onClick={ () => this.props.save(this.props.city)}>Spara som favorit</button>
+                <button class='btn' id='buttonSaveFavorite' onClick={ () => this.props.save(this.props.city)}>Spara som favorit<i class="fas fa-heart"></i></button>
+   
             </div>
         );
     }

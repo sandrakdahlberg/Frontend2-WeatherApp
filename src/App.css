@@ -27,6 +27,7 @@
     border-radius: 25px; 
     margin-left: 10px; 
     padding-bottom: 5px;
+    float: left;
 }
 
 .FiveDaysForecastHeadline{
@@ -66,4 +67,57 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.searchForm{
+    margin-left: 100px;
+    margin-top: 30px;
+}
+
+.searchForm input{
+    width: 200px;
+}
+
+#buttonSaveFavorite
+{
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 3px 4px #888888; 
+}
+
+
+#myFavorites{
+    float:left;
+    margin-left: 40px;
+    background-color: rgba(15, 130, 238, 0.3);
+    width: 300px;
+    margin-top: 0;
+    padding-top: 5px; 
+    border-radius: 25px;
+    padding-bottom: 5px;
+    float: left;
+    text-align: center;
+    font-family:Georgia;
+}
+
+#myFavorites ul{
+    list-style-type: none;
+    text-align: left;
+}
+
+#myFavorites ul li{
+    padding-top: 10px;
+}
+
+
+
+
 

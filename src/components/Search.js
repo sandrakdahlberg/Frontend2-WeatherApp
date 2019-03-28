@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import '../App.css';
 
 export default class Search extends Component{
 
     render()
     {
-        return(<div>
-            <input type="text" ref={(val) => this.searchValue = val} />
+        return(<div className='searchForm'>
+            <input type="text" placeholder='Sök stad' ref={(val) => this.searchValue = val} />
             <button onClick={ () => this.props.search(this.searchValue.value)}>Sök</button>
         </div>)
     }
